@@ -40,7 +40,7 @@ const Products = () => {
       return(
         <>
           <List divided verticalAlign='middle'>
-            <Product key={p.id} plantName={p.plant_name}/>
+            <Product key={p.id} plantName={p.full_description}/>
           </List>
         </>
       )

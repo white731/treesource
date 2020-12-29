@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   namespace :api do
     resources :things
     resources :users
+    resources :orders do 
+      resources :order_line_items
+    end
     resources :products
+    
   end
 
 end

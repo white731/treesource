@@ -12,7 +12,6 @@ const LoaderFile = () => {
       <Image src='/images/wireframe/short-paragraph.png' />
     </Segment>
   )
-
 }
 
 export default LoaderFile
