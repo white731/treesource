@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import Axios from "axios"
 import { Header, List } from "semantic-ui-react"
 import Product from "./Product"
-import LoaderFile from "./LoaderFile"
+import LoaderFile from "../LoaderFile"
 
 const Products = () => {
   
@@ -40,7 +40,7 @@ const Products = () => {
       return(
         <>
           <List divided verticalAlign='middle'>
-            <Product key={p.id} plantName={p.full_description}/>
+            <Product {...props}/>
           </List>
         </>
       )

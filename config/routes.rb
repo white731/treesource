@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :order_line_items
     end
     resources :products
+    resources :userproducts
     
   end
 

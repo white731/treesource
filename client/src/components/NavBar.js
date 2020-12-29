@@ -11,26 +11,35 @@ export default () => {
 
   const value = useContext(AuthContext)
 
-  const links = () => {
+  const userStatus = () => {
     if (value.authenticated){
       return (
       <>
-        <Menu.Item onClick={() => value.handleLogout(history)} name="Logout" />
-        <Link to="/user">
-          <MenuText content={value.email} />
+        <Link to="/userproducts">
+          <Menu.Item name='Products'/>
         </Link>
+        <Menu.Menu position="right">
+          <Menu.Item onClick={() => value.handleLogout(history)} name="Logout" />
+          <Link to="/user">
+            <MenuText content={value.email} />
+          </Link>
+        </Menu.Menu>
       </>
       )
     }
     return(
       <>
-      <Link to="/login">
-        <Menu.Item name='Login'/>
+      <Link to="/products">
+        <Menu.Item name='Products'/>
       </Link>
-      <Link to="/register">
-        <Menu.Item name='Register'/>
-      </Link>
-      
+      <Menu.Menu position="right">
+        <Link to="/login">
+          <Menu.Item name='Login'/>
+        </Link>
+        <Link to="/register">
+          <Menu.Item name='Register'/>
+        </Link>
+      </Menu.Menu>
       </>
     )
   }
@@ -43,13 +52,7 @@ export default () => {
       <Link to="/users">
         <Menu.Item name='All Users'/>
       </Link>
-      <Link to="/things">
-        <Menu.Item name='Things'/>
-      </Link>
-      <Link to="/products">
-        <Menu.Item name='Products'/>
-      </Link>
-      <Menu.Menu position="right">{links()}</Menu.Menu>
+      {userStatus()}
     </Menu>
   )
 }
