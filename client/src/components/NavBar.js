@@ -46,6 +46,9 @@ export default () => {
       <Link to="/things">
         <Menu.Item name='Things'/>
       </Link>
+      <Link to="/products">
+        <Menu.Item name='Products'/>
+      </Link>
       <Menu.Menu position="right">{links()}</Menu.Menu>
     </Menu>
   )
