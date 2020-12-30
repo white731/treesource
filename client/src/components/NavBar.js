@@ -1,7 +1,7 @@
 import {Menu} from "semantic-ui-react"
 import {Link, useHistory} from "react-router-dom"
 import styled from "styled-components"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { AuthContext } from "../providers/AuthProvider"
 
 
@@ -11,11 +11,13 @@ export default () => {
 
   const value = useContext(AuthContext)
 
+  const [id, setID] = useState("new_quote")
+
   const userStatus = () => {
     if (value.authenticated){
       return (
       <>
-        <Link to="/userproducts">
+        <Link to={`/order/${id}`}>
           <Menu.Item name='Products'/>
         </Link>
         <Menu.Menu position="right">

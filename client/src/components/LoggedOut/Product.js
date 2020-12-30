@@ -1,6 +1,6 @@
 import { List, Button, Image } from "semantic-ui-react"
 
-const Product = ({full_description, quantity_on_hand}) => {
+const Product = ({id,full_description, quantity_on_hand}) => {
 
   return (
     <List.Item key={id}>

@@ -13,7 +13,7 @@ import FetchUser from './components/FetchUser';
 import ProtectedRoute from './components/ProtectedRoute';
 import User from './components/LoggedIn/User';
 import Products from './components/LoggedOut/Products';
-import UserProducts from './components/LoggedIn/UserProducts';
+import OrderMain from './components/LoggedIn/OrderMain';
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
       <ProtectedRoute exact path='/things' component={Things}/>
       <ProtectedRoute exact path='/user' component={User}/>
       <Route exact path='/products' component={Products}/>
-      <ProtectedRoute exact path='/userproducts' component={UserProducts}/>
+      <ProtectedRoute exact path='/order/:id' component={OrderMain}/>
       <Route component={NoMatch} />
       </Switch>
     </Container>

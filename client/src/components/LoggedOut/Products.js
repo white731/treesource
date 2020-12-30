@@ -40,7 +40,7 @@ const Products = () => {
       return(
         <>
           <List divided verticalAlign='middle'>
-            <Product {...props}/>
+            <Product {...p}/>
           </List>
         </>
       )

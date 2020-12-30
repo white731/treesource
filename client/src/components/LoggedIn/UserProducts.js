@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import Axios from "axios"
-import { Header, List } from "semantic-ui-react"
+import { Header, List, Button, Input, Form, Grid, Segment, Divider } from "semantic-ui-react"
 import LoaderFile from "../LoaderFile"
 import UserProduct from "./UserProduct"
 
@@ -18,7 +18,6 @@ const UserProducts = () => {
     try{
       let res = await Axios.get("/api/userproducts")
       setProducts(res.data)
-      setLoading(false)
       console.log("res.data: ", res.data)
       
       
@@ -27,10 +26,9 @@ const UserProducts = () => {
       console.log(err)
       setError(true)
     }
-    // finally {
-    //   setLoading(false)
-    //   // console.log("products: ", products)
-    // }
+    finally {
+      setLoading(false)
+    }
   }
 
   const renderProducts = () => {
@@ -58,9 +56,11 @@ const UserProducts = () => {
 
   return(
     <>
-      <Header>Products Search Page</Header>
-      {renderProducts()}
-      
+      <Header>Products Search Page</Header> 
+        <Form>
+        <Input placeholder="Search Here"/>
+        </Form>
+          {renderProducts()}
     </>
   )
 
