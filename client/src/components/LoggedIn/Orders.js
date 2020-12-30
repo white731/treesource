@@ -1,7 +1,8 @@
 import LoaderFile from "../LoaderFile"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import Axios from "axios"
 import { Header } from "semantic-ui-react"
+import Order from "./Order"
 
 const Orders = () => {
 
@@ -28,15 +29,17 @@ const Orders = () => {
   }
 
   const renderOrders = ()=>{
+    
     if (loading){ 
       return <LoaderFile/>
    }
     if (error){ return <p>Please login in to see this page.</p> }
     return orders.map((o, index)=>{
+      
       return (
-        <div key={index} >
-          {o.customer_name}
-        </div>
+        <>
+          <Order {...o}/>
+        </>
       )
     })
   }

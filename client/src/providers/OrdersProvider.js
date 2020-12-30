@@ -1,19 +1,18 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
+import Axios from "axios"
 
 export const OrdersContext = React.createContext()
 
-const OrdersProvider = () => {
+const OrdersProvider = (props) => {
 
-
-  const [orders, setOrders] = useState({})
+  
 
   const ordersInfo = {
-    ...orders,
-    setOrders
+   
   }
 
   return(
-    <OrdersContext.Provider value= {ordersInfo}>
+    <OrdersContext.Provider value = {ordersInfo}>
       {props.children}
     </OrdersContext.Provider>
   )

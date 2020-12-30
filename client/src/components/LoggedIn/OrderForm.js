@@ -1,14 +1,23 @@
 import { Form, Header } from "semantic-ui-react"
 import { useState } from "react"
-import { Redirect, Link } from "react-router-dom"
+import { Redirect, Link, useHistory } from "react-router-dom"
 
-const OrderForm = () => {
+const OrderForm = (props) => {
 
   const [customerName, setCustomerName] = useState("")
 
+  const history = useHistory()
+
   const handleSubmit = () => {
     console.log(customerName)
-  
+    createOrder({
+      customer_name:customerName
+    })
+    history.push("/order/2")
+  }
+
+  const createOrder = (newOrder) => {
+    console.log(newOrder)
   }
 
   return (
@@ -58,9 +67,7 @@ const OrderForm = () => {
         placeholder = "Zip Code"
         />
 
-      <Link to="/order/2">
         <Form.Button>Create Quote</Form.Button>
-      </Link>
       </Form>
     </>
   )

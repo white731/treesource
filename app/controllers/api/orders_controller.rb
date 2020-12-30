@@ -5,5 +5,9 @@ class Api::OrdersController < ApplicationController
     orders = current_user.orders.all
     render json: orders
   end
+
+  def create
+    
+  end
   
 end
