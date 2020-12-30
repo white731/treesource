@@ -1,9 +1,14 @@
 import { Form, Header } from "semantic-ui-react"
+import { useState } from "react"
+import { Redirect, Link } from "react-router-dom"
 
 const OrderForm = () => {
 
-  const handleSubmit = () => {
+  const [customerName, setCustomerName] = useState("")
 
+  const handleSubmit = () => {
+    console.log(customerName)
+  
   }
 
   return (
@@ -13,8 +18,9 @@ const OrderForm = () => {
       <Form onSubmit={handleSubmit}>
         <Form.Input
         label= "Customer Name"
-        value= "" 
+        value= {customerName} 
         placeholder = "Customer Name"
+        onChange = {(e)=>{setCustomerName(e.target.value)}}
         />
          <Form.Input
         label= "Job Name"
@@ -52,8 +58,9 @@ const OrderForm = () => {
         placeholder = "Zip Code"
         />
 
-      
+      <Link to="/order/2">
         <Form.Button>Create Quote</Form.Button>
+      </Link>
       </Form>
     </>
   )

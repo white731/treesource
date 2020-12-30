@@ -43,7 +43,6 @@ const AuthProvider = (props) => {
     
   }
 
-
   const [user, setUser] = useState(null)
 
   const auth = {

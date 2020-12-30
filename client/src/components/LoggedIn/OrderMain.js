@@ -2,6 +2,7 @@ import UserProducts from "./UserProducts"
 import { Segment, Grid, Divider } from "semantic-ui-react"
 import OrderForm from "./OrderForm"
 import { useParams } from "react-router-dom"
+import Orders from "./Orders"
 
 const OrderMain = () => {
 
@@ -12,11 +13,13 @@ const OrderMain = () => {
       return(
         <>
           <h1>Order has a param of {id}</h1>
+          <Orders/>
           <OrderForm/>
+          
         </>
       )
     } 
-    return <h1>Order has param that is not 1</h1>
+  return <h1>Order has param that is {id}</h1>
   }
 
   return(
