@@ -3,8 +3,9 @@ import { useState, useEffect, useContext } from "react"
 import Axios from "axios"
 import { Header } from "semantic-ui-react"
 import Order from "./Order"
+import OrderForm from "./OrderForm"
 
-const Orders = () => {
+const Orders = (props) => {
 
   const [orders, setOrders] = useState([])
   const [loading, setLoading] = useState(true)
@@ -28,6 +29,19 @@ const Orders = () => {
     }
   }
 
+  const createOrder = async (newOrder) => {
+    console.log(newOrder)
+    try{
+      // debugger
+      let res = await Axios.post(`/api/orders`,newOrder)
+      console.log("res: ",res.data)
+      setOrders([...orders, res.data])
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
+
   const renderOrders = ()=>{
     
     if (loading){ 
@@ -35,7 +49,7 @@ const Orders = () => {
    }
     if (error){ return <p>Please login in to see this page.</p> }
     return orders.map((o, index)=>{
-      
+
       return (
         <>
           <Order {...o}/>
@@ -48,6 +62,7 @@ const Orders = () => {
     <>
     <Header>Orders</Header>
     {renderOrders()}
+    <OrderForm createOrder = {createOrder} />
     </>
   )
 

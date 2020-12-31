@@ -1,8 +1,9 @@
 import { Form, Header } from "semantic-ui-react"
 import { useState } from "react"
 import { Redirect, Link, useHistory } from "react-router-dom"
+import Axios from "axios"
 
-const OrderForm = (props) => {
+const OrderForm = ({createOrder}) => {
 
   const [customerName, setCustomerName] = useState("")
 
@@ -11,14 +12,22 @@ const OrderForm = (props) => {
   const handleSubmit = () => {
     console.log(customerName)
     createOrder({
-      customer_name:customerName
+      customer_name: customerName
     })
-    history.push("/order/2")
+    // history.push("/order/2")
   }
 
-  const createOrder = (newOrder) => {
-    console.log(newOrder)
-  }
+  // const createOrder = async (newOrder) => {
+  //   console.log(newOrder)
+  //   try{
+  //     let res = await Axios.post(`/api/orders`,newOrder)
+  //     console.log(res.data)
+      
+  //   }
+  //   catch(err){
+  //     console.log(err)
+  //   }
+  // }
 
   return (
 

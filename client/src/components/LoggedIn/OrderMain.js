@@ -13,9 +13,7 @@ const OrderMain = () => {
       return(
         <>
           <h1>Order has a param of {id}</h1>
-          <Orders/>
-          <OrderForm/>
-          
+          <Orders />
         </>
       )
     } 

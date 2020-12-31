@@ -13,11 +13,9 @@ initMiddleware()
 
 ReactDOM.render(
   <AuthProvider>
-    <OrdersProvider>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-    </OrdersProvider>
   </AuthProvider>,
   document.getElementById('root')
 );
