@@ -5,6 +5,7 @@ import { useParams, useHistory } from "react-router-dom"
 import Orders from "./Orders"
 import { useContext } from "react"
 import { AuthContext } from "../../providers/AuthProvider"
+import OrderEdit from "./OrderEdit"
 
 const OrderMain = () => {
 
@@ -23,6 +24,7 @@ const OrderMain = () => {
         <>
           <Header>Select from a quote below or create a new quote</Header>
           <Orders />
+          Hello Landon that feels goooooood Hello again
         </>
       )
     } 
@@ -30,6 +32,7 @@ const OrderMain = () => {
     <>
     <Header>You're currently editing quote {id}</Header>
     <Button onClick={newOrderScreen}>Create New Order</Button>
+    <OrderEdit/>
     </>
   )
   }
