@@ -14,6 +14,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import User from './components/LoggedIn/User';
 import Products from './components/LoggedOut/Products';
 import OrderMain from './components/LoggedIn/OrderMain';
+import OrderManagement from './components/LoggedIn/OrderManagement';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <ProtectedRoute exact path='/user' component={User}/>
       <Route exact path='/products' component={Products}/>
       <ProtectedRoute exact path='/order/:id' component={OrderMain}/>
+      <ProtectedRoute exact path ='/order-management/' component={OrderManagement}/> 
       <Route component={NoMatch} />
       </Switch>
     </Container>

@@ -11,14 +11,15 @@ export default () => {
 
   const value = useContext(AuthContext)
 
-  const [id, setID] = useState("new_quote")
-
   const userStatus = () => {
     if (value.authenticated){
       return (
       <>
-        <Link to={`/order/${id}`}>
+        <Link to={`/order/${value.liveOrder}`}>
           <Menu.Item name='Products'/>
+        </Link>
+        <Link to ='/order-management/'>
+          <Menu.Item name='Orders'/>
         </Link>
         <Menu.Menu position="right">
           <Menu.Item onClick={() => value.handleLogout(history)} name="Logout" />
@@ -33,6 +34,9 @@ export default () => {
       <>
       <Link to="/products">
         <Menu.Item name='Products'/>
+      </Link>
+      <Link to ='/order-management/'>
+        <Menu.Item name='Orders'/>
       </Link>
       <Menu.Menu position="right">
         <Link to="/login">

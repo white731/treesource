@@ -1,29 +1,43 @@
 import UserProducts from "./UserProducts"
-import { Segment, Grid, Divider } from "semantic-ui-react"
+import { Segment, Grid, Divider, Header, Button } from "semantic-ui-react"
 import OrderForm from "./OrderForm"
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import Orders from "./Orders"
+import { useContext } from "react"
+import { AuthContext } from "../../providers/AuthProvider"
 
 const OrderMain = () => {
 
   let {id} = useParams()
+  const {setLiveOrder} = useContext(AuthContext)
+  const history = useHistory()
+
+  const newOrderScreen = () => {
+    setLiveOrder("new_quote")
+    history.push("/order/new_quote")
+  }
 
   const orderScreen=()=>{
     if (id === "new_quote"){
       return(
         <>
-          <h1>Order has a param of {id}</h1>
+          <Header>Select from a quote below or create a new quote</Header>
           <Orders />
         </>
       )
     } 
-  return <h1>Order has param that is {id}</h1>
+  return (
+    <>
+    <Header>You're currently editing quote {id}</Header>
+    <Button onClick={newOrderScreen}>Create New Order</Button>
+    </>
+  )
   }
 
   return(
-  <Segment>
+  <Segment >
   <Grid columns={2} relaxed='very'>
-    <Grid.Column>
+    <Grid.Column style={{overflow: 'auto', maxHeight: "1000px" }}>
      <UserProducts/>
     </Grid.Column>
     <Grid.Column>
@@ -31,7 +45,7 @@ const OrderMain = () => {
       {/* <h1>The Id param is equal to {id}</h1> */}
     </Grid.Column>
   </Grid>
-  <Divider vertical>And</Divider>
+  <Divider vertical></Divider>
 </Segment>
   )
 }

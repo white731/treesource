@@ -44,6 +44,7 @@ const AuthProvider = (props) => {
   }
 
   const [user, setUser] = useState(null)
+  const [liveOrder, setLiveOrder] = useState("new_quote")
 
   const auth = {
     ...user,
@@ -52,6 +53,8 @@ const AuthProvider = (props) => {
     handleLogout,
     authenticated: user !== null,
     setUser,
+    setLiveOrder,
+    liveOrder
   }
 
   return(

@@ -14,20 +14,7 @@ const OrderForm = ({createOrder}) => {
     createOrder({
       customer_name: customerName
     })
-    // history.push("/order/2")
   }
-
-  // const createOrder = async (newOrder) => {
-  //   console.log(newOrder)
-  //   try{
-  //     let res = await Axios.post(`/api/orders`,newOrder)
-  //     console.log(res.data)
-      
-  //   }
-  //   catch(err){
-  //     console.log(err)
-  //   }
-  // }
 
   return (
 

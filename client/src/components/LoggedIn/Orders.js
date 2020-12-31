@@ -4,12 +4,15 @@ import Axios from "axios"
 import { Header } from "semantic-ui-react"
 import Order from "./Order"
 import OrderForm from "./OrderForm"
+import { AuthContext } from "../../providers/AuthProvider"
 
 const Orders = (props) => {
 
   const [orders, setOrders] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+
+  const {setLiveOrder} = useContext(AuthContext)
 
   useEffect(()=>{
     getOrders()
@@ -36,6 +39,8 @@ const Orders = (props) => {
       let res = await Axios.post(`/api/orders`,newOrder)
       console.log("res: ",res.data)
       setOrders([...orders, res.data])
+      console.log(res.data.id)
+      setLiveOrder(res.data.id)
     }
     catch(err){
       console.log(err)
