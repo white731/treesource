@@ -6,13 +6,25 @@ import Axios from "axios"
 const OrderForm = ({createOrder}) => {
 
   const [customerName, setCustomerName] = useState("")
+  const [jobName, setJobName] = useState("")
+  const [poNumber, setPoNumber] = useState("")
+  const [shippingAddress, setShippingAddress] = useState("")
+  const [shippingCity, setShippingCity] = useState("")
+  const [shippingState, setShippingState] = useState("")
+  const [shippingZip, setShippingZip] = useState("")
 
   const history = useHistory()
 
   const handleSubmit = () => {
     console.log(customerName)
     createOrder({
-      customer_name: customerName
+      customer_name: customerName,
+      job_name:jobName,
+      po_number:poNumber,
+      shipping_address:shippingAddress,
+      shipping_state:shippingState,
+      shipping_city:shippingCity,
+      shipping_zip:shippingZip
     })
   }
 
@@ -21,6 +33,7 @@ const OrderForm = ({createOrder}) => {
     <>
     <Header>Order Creation Form</Header>
       <Form onSubmit={handleSubmit}>
+        
         <Form.Input
         label= "Customer Name"
         value= {customerName} 
@@ -29,38 +42,39 @@ const OrderForm = ({createOrder}) => {
         />
          <Form.Input
         label= "Job Name"
-        value= "" 
+        value= {jobName} 
         placeholder = "Job Name"
+        onChange = {(e)=>{setJobName(e.target.value)}}
         />
          <Form.Input
         label= "PO Number"
-        value= "" 
+        value= {poNumber}
         placeholder = "PO Number"
-        />
-         <Form.Input
-        label= "Price Tier"
-        value= "" 
-        placeholder = "Price Tier"
+        onChange = {(e)=>{setPoNumber(e.target.value)}}
         />
          <Form.Input
         label= "Shipping Address"
-        value= "" 
+        value= {shippingAddress}
         placeholder = "Shipping Address"
+        onChange = {(e)=>{setShippingAddress(e.target.value)}}
         />
          <Form.Input
         label= "City"
-        value= "" 
+        value= {shippingCity} 
         placeholder = "City"
+        onChange = {(e)=>{setShippingCity(e.target.value)}}
         />
          <Form.Input
         label= "State"
-        value= "" 
+        value= {shippingState}
         placeholder = "State"
+        onChange = {(e)=>{setShippingState(e.target.value)}}
         />
          <Form.Input
         label= "Zip Code"
-        value= "" 
+        value= {shippingZip}
         placeholder = "Zip Code"
+        onChange = {(e)=>{setShippingZip(e.target.value)}}
         />
 
         <Form.Button>Create Quote</Form.Button>

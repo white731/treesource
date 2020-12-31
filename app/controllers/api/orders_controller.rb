@@ -19,8 +19,8 @@ class Api::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:customer_name)
+    params.require(:order).permit(:customer_name,:job_name,:po_number,:price_tier,:shipping_address,:shipping_city,:shipping_state,:shipping_zip)
   end
 end
 
-# :order_status,:job_name,:po_number,:price_tier,:shipping_address,:shipping_city,:shipping_state,:shipping_zip
+# 
