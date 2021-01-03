@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Home from './demo/Home';
 import { Container } from 'semantic-ui-react';
@@ -15,6 +15,8 @@ import User from './components/LoggedIn/User';
 import Products from './components/LoggedOut/Products';
 import OrderMain from './components/LoggedIn/OrderMain';
 import OrderManagement from './components/LoggedIn/OrderManagement';
+import AuthProvider from './providers/AuthProvider';
+import OrdersProvider from './providers/OrdersProvider';
 
 function App() {
   return (
@@ -23,16 +25,17 @@ function App() {
   <FetchUser>
     <Container>
       <Switch>
-      <Route exact path='/' component={Home}/>
-      <Route exact path='/login' component={Login}/>
-      <Route exact path='/register' component={Register}/>
-      <ProtectedRoute exact path='/users' component={Users}/>
-      <ProtectedRoute exact path='/things' component={Things}/>
-      <ProtectedRoute exact path='/user' component={User}/>
-      <Route exact path='/products' component={Products}/>
-      <ProtectedRoute exact path='/order/:id' component={OrderMain}/>
-      <ProtectedRoute exact path ='/order-management/' component={OrderManagement}/> 
-      <Route component={NoMatch} />
+        <Route exact path='/' component={Home}/>
+        <Route exact path='/login' component={Login}/>
+        <Route exact path='/register' component={Register}/>
+        <ProtectedRoute exact path='/users' component={Users}/>
+        <ProtectedRoute exact path='/things' component={Things}/>
+        <ProtectedRoute exact path='/user' component={User}/>
+        <Route exact path='/products' component={Products}/>
+        <ProtectedRoute exact path='/order/:id' component={OrderMain}/>
+        <ProtectedRoute exact path ='/order-management/' component={OrderManagement}/>
+        <ProtectedRoute component={OrdersProvider}/> 
+        <Route component={NoMatch} />
       </Switch>
     </Container>
   </FetchUser>

@@ -12,11 +12,13 @@ import OrdersProvider from './providers/OrdersProvider';
 initMiddleware()
 
 ReactDOM.render(
-  <AuthProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </AuthProvider>,
+    <AuthProvider>
+      <OrdersProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </OrdersProvider>
+    </AuthProvider>,
   document.getElementById('root')
 );
 
