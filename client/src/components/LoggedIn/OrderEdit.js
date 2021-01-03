@@ -13,7 +13,7 @@ const OrderEdit = () => {
       // debugger
    let order = orders.find(x => x.id === id)
    console.log(order)
-   return {...order}
+   return order
     }
   }
 
