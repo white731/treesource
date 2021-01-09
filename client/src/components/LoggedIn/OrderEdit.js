@@ -1,32 +1,40 @@
 import { Header } from "semantic-ui-react"
 import { useParams } from "react-router-dom"
-import { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { OrdersContext } from "../../providers/OrdersProvider"
 
 const OrderEdit = () => {
 
   let {id} = useParams()
   const {orders, loading} = useContext(OrdersContext)
+  const [order, setOrder] = useState({})
 
-  const selectedOrder = () => {
-    if (loading === false) {
-      // debugger
-   let order = orders.find(x => x.id === id)
-   console.log(order)
-   return order
+  useEffect(()=>{
+    if(loading === false) {
+    const order = orders.find(x => x.id == id)
+    // debugger
+    setOrder(order)
+    console.log(order)
     }
+  },[loading])
+
+  const renderOrder = () => {
+    if (loading){
+      return (
+        <Header>Loading</Header>
+      )
+    }
+    return (
+        <Header>Job Name:</Header>
+    )
   }
 
   return (
     <>
     <Header>You're editing order {id}</Header>
-    <Header>Job Name: </Header>
-  
-    {selectedOrder()}
+    {renderOrder()}
     </>
-
   )
-
 }
 
 export default OrderEdit
