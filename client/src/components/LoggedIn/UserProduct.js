@@ -1,15 +1,28 @@
 import { List, Button, Image, Input, Form } from "semantic-ui-react"
 import { useParams } from "react-router-dom"
+import Axios from "axios"
 
-const UserProduct = ({id,full_description, quantity_on_hand}) => {
+const UserProduct = ({id,full_description, quantity_on_hand,sales_price}) => {
 
   const { order_id } = useParams()
 
-  const handleClick = () => {
+  let newItem = {
+    product_id:id, 
+    quantity:10,
+    price: sales_price
+  }
+
+  const handleClick = async() => {
     if (order_id === "new_quote") {
       alert("Create or select a quote before you add to an order")
     } else {
-      alert( `adding to order ${order_id}`)
+      // alert( `adding product ${id} to order ${order_id}`)
+      try {
+        let res = await Axios.post(`/api/orders/${order_id}/order_line_items`,newItem)
+        console.log(res.data)
+      } catch(err){
+        console.log(err)
+      }
     }
   }
 
