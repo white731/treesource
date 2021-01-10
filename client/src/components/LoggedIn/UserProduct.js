@@ -20,6 +20,7 @@ const UserProduct = ({id,full_description, quantity_on_hand,sales_price}) => {
       try {
         let res = await Axios.post(`/api/orders/${order_id}/order_line_items`,newItem)
         console.log(res.data)
+        window.location.reload()
       } catch(err){
         console.log(err)
       }

@@ -24,7 +24,6 @@ const OrderMain = () => {
         <>
           <Header>Select from a quote below or create a new quote</Header>
           <Orders />
-          
         </>
       )
     } 

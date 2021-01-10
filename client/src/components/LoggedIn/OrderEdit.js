@@ -4,12 +4,13 @@ import React, { useContext, useEffect, useState } from "react"
 import { OrdersContext } from "../../providers/OrdersProvider"
 import Axios from "axios"
 
-const OrderEdit = () => {
+const OrderEdit = ({setProductTest}) => {
 
   let {order_id} = useParams()
   const {orders, loading} = useContext(OrdersContext)
 
   const [order, setOrder] = useState({})
+
 
   useEffect(()=>{
     if(loading === false) {
