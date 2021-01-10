@@ -5,13 +5,13 @@ import { OrdersContext } from "../../providers/OrdersProvider"
 
 const OrderEdit = () => {
 
-  let {id} = useParams()
+  let {order_id} = useParams()
   const {orders, loading} = useContext(OrdersContext)
   const [order, setOrder] = useState({})
 
   useEffect(()=>{
     if(loading === false) {
-    const order = orders.find(x => x.id == id)
+    const order = orders.find(x => x.id == order_id)
     // debugger
     setOrder(order)
     console.log(order)
@@ -25,13 +25,22 @@ const OrderEdit = () => {
       )
     }
     return (
-        <Header>Job Name:</Header>
+      <>
+    <Header>Job Name: {order.job_name}</Header>
+    <Header>Customer Name: {order.customer_name}</Header>
+    <Header>PO number: {order.po_number}</Header>
+    <Header>Price Tier: {order.price_tier}</Header>
+    <Header>Shipping Address: {order.shipping_address}</Header>
+    <Header>City: {order.shipping_city}</Header>
+    <Header>State: {order.shipping_state}</Header>
+    <Header>Zip Code: {order.shipping_state}</Header>
+    </>
     )
   }
 
   return (
     <>
-    <Header>You're editing order {id}</Header>
+    <Header>You're editing order {order_id}</Header>
     {renderOrder()}
     </>
   )

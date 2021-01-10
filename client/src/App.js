@@ -32,7 +32,7 @@ function App() {
         <ProtectedRoute exact path='/things' component={Things}/>
         <ProtectedRoute exact path='/user' component={User}/>
         <Route exact path='/products' component={Products}/>
-        <ProtectedRoute exact path='/order/:id' component={OrderMain}/>
+        <ProtectedRoute exact path='/order/:order_id' component={OrderMain}/>
         <ProtectedRoute exact path ='/order-management/' component={OrderManagement}/>
         <ProtectedRoute component={OrdersProvider}/> 
         <Route component={NoMatch} />
