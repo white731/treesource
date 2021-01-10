@@ -9,7 +9,7 @@ import OrderEdit from "./OrderEdit"
 
 const OrderMain = () => {
 
-  let {id} = useParams()
+  let {order_id} = useParams()
   const {setLiveOrder} = useContext(AuthContext)
   const history = useHistory()
 
@@ -19,7 +19,7 @@ const OrderMain = () => {
   }
 
   const orderScreen=()=>{
-    if (id === "new_quote"){
+    if (order_id === "new_quote"){
       return(
         <>
           <Header>Select from a quote below or create a new quote</Header>
@@ -30,7 +30,7 @@ const OrderMain = () => {
     } 
   return (
     <>
-    <Header>You're currently editing quote {id}</Header>
+    <Header>You're currently editing quote {order_id}</Header>
     <Button onClick={newOrderScreen}>Create New Order</Button>
     <OrderEdit/>
     </>
