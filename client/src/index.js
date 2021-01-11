@@ -8,15 +8,18 @@ import {BrowserRouter} from "react-router-dom"
 import AuthProvider from './providers/AuthProvider';
 import { initMiddleware, } from 'devise-axios';
 import OrdersProvider from './providers/OrdersProvider';
+import ProductsProvider from './providers/ProductsProvider';
 
 initMiddleware()
 
 ReactDOM.render(
     <AuthProvider>
       <OrdersProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <ProductsProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </ProductsProvider>
       </OrdersProvider>
     </AuthProvider>,
   document.getElementById('root')

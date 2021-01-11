@@ -1,10 +1,13 @@
 import { List, Button, Image, Input, Form } from "semantic-ui-react"
 import { useParams } from "react-router-dom"
 import Axios from "axios"
+import { useContext } from "react"
+import { ProductsContext } from "../../providers/ProductsProvider"
 
 const UserProduct = ({id,full_description, quantity_on_hand,sales_price}) => {
 
   const { order_id } = useParams()
+  const {get_order_line_items} = useContext(ProductsContext)
 
   let newItem = {
     product_id:id, 
@@ -20,7 +23,8 @@ const UserProduct = ({id,full_description, quantity_on_hand,sales_price}) => {
       try {
         let res = await Axios.post(`/api/orders/${order_id}/order_line_items`,newItem)
         console.log(res.data)
-        window.location.reload()
+        get_order_line_items()
+        // window.location.reload()
       } catch(err){
         console.log(err)
       }

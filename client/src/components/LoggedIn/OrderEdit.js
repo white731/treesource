@@ -3,28 +3,33 @@ import { useParams } from "react-router-dom"
 import React, { useContext, useEffect, useState } from "react"
 import { OrdersContext } from "../../providers/OrdersProvider"
 import Axios from "axios"
+import { ProductsContext } from "../../providers/ProductsProvider"
+import { AuthContext } from "../../providers/AuthProvider"
 
-const OrderEdit = ({setProductTest}) => {
+const OrderEdit = () => {
 
   let {order_id} = useParams()
   const {orders, loading} = useContext(OrdersContext)
+  const {products,get_order_line_items} = useContext(ProductsContext)
+  const {setLiveOrder} = useContext(AuthContext)
 
   const [order, setOrder] = useState({})
 
+  setLiveOrder(order_id)
 
   useEffect(()=>{
     if(loading === false) {
     const order = orders.find(x => x.id == order_id)
     // debugger
+    get_order_line_items()
     setOrder(order)
-    
     console.log(order)
     }
   },[loading])
 
-  useEffect(()=>{
-    get_order_line_items()
-  },[])
+  // useEffect(()=>{
+    
+  // },[])
 
   const renderOrder = () => {
     if (loading){
@@ -49,17 +54,19 @@ const OrderEdit = ({setProductTest}) => {
     return <Header>There's been an Error</Header>
   }
 
-  const [products, setProducts] = useState([])
+  // const [products, setProducts] = useState([])
 
-  const get_order_line_items = async () => {
-    try {
-      let res = await Axios.get(`/api/orders/${order_id}/order_line_items`)
-      console.log(res.data)
-      setProducts(res.data)
-    } catch(err){
-      console.log(err)
-    }
-  }
+  // const get_order_line_items = async () => {
+  //   try {
+  //     let res = await Axios.get(`/api/orders/${order_id}/order_line_items`)
+  //     console.log(res.data)
+  //     setProducts(res.data)
+  //   } catch(err){
+  //     console.log(err)
+  //   }
+  // }
+
+ 
 
   const render_line_items = () => {
     return products.map((p)=>{
