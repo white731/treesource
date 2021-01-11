@@ -4,7 +4,7 @@ import Axios from "axios"
 import { useContext } from "react"
 import { ProductsContext } from "../../providers/ProductsProvider"
 
-const UserProduct = ({id,full_description, quantity_on_hand,sales_price}) => {
+const UserProduct = ({id, full_description, quantity_on_hand, sales_price}) => {
 
   const { order_id } = useParams()
   const {get_order_line_items} = useContext(ProductsContext)

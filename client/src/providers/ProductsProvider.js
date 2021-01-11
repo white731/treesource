@@ -17,7 +17,6 @@ const ProductsProvider = (props) => {
   const [products, setProducts] = useState([])
   const [loadingProducts, setLoadingProducts] = useState(true)
   const [errorProducts, setErrorProducts] = useState(false)
-  // const [liveOrderForProducts, setLiveOrderForProducts] = useState("new_quote")
 
   const get_order_line_items = async () => {
     try {
