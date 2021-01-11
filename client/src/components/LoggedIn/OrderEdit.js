@@ -56,7 +56,7 @@ const OrderEdit = () => {
       <>
         <List.Item style={{borderBottom: "1px solid black"}}>
           <List.Content floated='left' style={{alignSelf: "center"}}>
-          {p.product_id}
+          {p.full_description}
           </List.Content>
           <List.Content floated='right' style={{alignSelf: "center"}}>
           {p.quantity}

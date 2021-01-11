@@ -21,7 +21,8 @@ const ProductsProvider = (props) => {
   const get_order_line_items = async () => {
     try {
       // debugger
-      let res = await Axios.get(`/api/orders/${liveOrder}/order_line_items`)
+      // let res = await Axios.get(`/api/orders/${liveOrder}/order_line_items`)
+      let res = await Axios.get(`/api/product_info/${liveOrder}`)
       console.log(res.data)
       setProducts(res.data)
 

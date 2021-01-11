@@ -6,6 +6,12 @@ class Api::OrderLineItemsController < ApplicationController
     render json: order.order_line_items.all
   end
 
+  def product_info
+    order = current_user.orders.find(params[:order_id])
+    line_items = OrderLineItem.get_all_product_info(order.id)
+    render json: line_items
+  end
+
   def create
     order = current_user.orders.find(params[:order_id])
     order_line_item = order.order_line_items.new(order_line_item_params)
