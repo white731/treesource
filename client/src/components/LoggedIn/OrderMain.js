@@ -29,8 +29,7 @@ const OrderMain = () => {
     } 
   return (
     <>
-    <Header>You're currently editing quote {order_id}</Header>
-    <Button onClick={newOrderScreen}>Create New Order</Button>
+    <Button onClick={newOrderScreen}>Select New Quote</Button>
     <OrderEdit/>
     </>
   )

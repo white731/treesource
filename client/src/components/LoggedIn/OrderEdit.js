@@ -69,7 +69,6 @@ const OrderEdit = () => {
 
   return (
     <>
-    <Header>You're editing order {order_id}</Header>
     {renderOrder()}
     <Divider horizontal>Line Items</Divider>
     <List>
