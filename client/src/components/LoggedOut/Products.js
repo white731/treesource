@@ -3,6 +3,7 @@ import Axios from "axios"
 import { Header, List } from "semantic-ui-react"
 import Product from "./Product"
 import LoaderFile from "../LoaderFile"
+import TreeSourceLoad from "../TreeSourceLoad"
 
 const Products = () => {
   
@@ -49,7 +50,7 @@ const Products = () => {
   
   if (loading) { 
       return (
-        <LoaderFile />
+        <TreeSourceLoad />
       )
     }
     if (error) {

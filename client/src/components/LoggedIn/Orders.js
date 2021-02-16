@@ -20,9 +20,7 @@ const Orders = (props) => {
     return orders.map((o, index)=>{
 
       return (
-        <>
-          <Order {...o}/>
-        </>
+          <Order key={index} {...o}/>
       )
     })
   }

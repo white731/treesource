@@ -6,8 +6,8 @@ import { ProductsContext } from "../../providers/ProductsProvider"
 
 const Order = ({customer_name, id}) => {
 
-const {setLiveOrder} = useContext(AuthContext)
-const {setLiveOrderForProducts} = useContext(ProductsContext)
+// const {setLiveOrder} = useContext(AuthContext)
+const {setLiveOrderForProducts, setLiveOrder} = useContext(ProductsContext)
 const history = useHistory()
   
 const getLiveOrder = () => {

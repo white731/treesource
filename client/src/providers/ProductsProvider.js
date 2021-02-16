@@ -6,7 +6,9 @@ export const ProductsContext = React.createContext()
 
 const ProductsProvider = (props) => {
 
-  const {authenticated, liveOrder} = useContext(AuthContext)
+  const {authenticated} = useContext(AuthContext)
+
+  const [liveOrder, setLiveOrder] = useState("new_quote")
 
   useEffect(()=>{
     if(authenticated){
@@ -21,7 +23,6 @@ const ProductsProvider = (props) => {
   const get_order_line_items = async () => {
     try {
       // debugger
-      // let res = await Axios.get(`/api/orders/${liveOrder}/order_line_items`)
       let res = await Axios.get(`/api/product_info/${liveOrder}`)
       console.log(res.data)
       setProducts(res.data)
@@ -40,7 +41,9 @@ const ProductsProvider = (props) => {
     setProducts,
     loadingProducts,
     errorProducts,
-    get_order_line_items
+    get_order_line_items,
+    liveOrder, 
+    setLiveOrder
   }
 
   return (

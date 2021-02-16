@@ -3,6 +3,7 @@ class Api::UserproductsController < ApplicationController
 
   def index
     products = Product.first(500)
+    # products = Product.all
     render json: products
   end
   

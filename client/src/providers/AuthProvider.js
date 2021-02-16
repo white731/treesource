@@ -9,7 +9,8 @@ export const AuthContext = React.createContext()
 const AuthProvider = (props) => {
 
   const [user, setUser] = useState(null)
-  const [liveOrder, setLiveOrder] = useState("new_quote")
+  
+  // const [liveOrder, setLiveOrder] = useState("new_quote")
 
   const handleRegister = async (user, history) => {
     try {
@@ -54,8 +55,6 @@ const AuthProvider = (props) => {
     handleLogout,
     authenticated: user !== null,
     setUser,
-    setLiveOrder,
-    liveOrder,
   }
 
   return(

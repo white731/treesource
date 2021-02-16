@@ -10,8 +10,8 @@ const OrderEdit = () => {
 
   let {order_id} = useParams()
   const {orders, loading} = useContext(OrdersContext)
-  const {products,get_order_line_items, loadingProducts, errorProducts} = useContext(ProductsContext)
-  const {setLiveOrder} = useContext(AuthContext)
+  const {products,get_order_line_items, loadingProducts, errorProducts, liveOrder, setLiveOrder} = useContext(ProductsContext)
+  // const {setLiveOrder} = useContext(AuthContext)
 
   const [order, setOrder] = useState({})
 
@@ -19,6 +19,7 @@ const OrderEdit = () => {
 
   useEffect(()=>{
     if(loading === false) {
+    
     const order = orders.find(x => x.id == order_id)
     // debugger
     get_order_line_items()
@@ -51,10 +52,9 @@ const OrderEdit = () => {
   }
  
   const render_line_items = () => {
-    return products.map((p)=>{
+    return products.map((p, i)=>{
       return (
-      <>
-        <List.Item style={{borderBottom: "1px solid black"}}>
+        <List.Item key={i} style={{borderBottom: "1px solid black"}}>
           <List.Content floated='left' style={{alignSelf: "center"}}>
           {p.full_description}
           </List.Content>
@@ -62,7 +62,6 @@ const OrderEdit = () => {
           {p.quantity}
           </List.Content>
         </List.Item>
-      </>
       )
     })
   }

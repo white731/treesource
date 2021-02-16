@@ -6,11 +6,12 @@ import Orders from "./Orders"
 import { useContext } from "react"
 import { AuthContext } from "../../providers/AuthProvider"
 import OrderEdit from "./OrderEdit"
+import { ProductsContext } from "../../providers/ProductsProvider"
 
 const OrderMain = () => {
 
   let {order_id} = useParams()
-  const {setLiveOrder} = useContext(AuthContext)
+  const {setLiveOrder} = useContext(ProductsContext)
   const history = useHistory()
 
   const newOrderScreen = () => {

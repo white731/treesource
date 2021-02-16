@@ -3,6 +3,7 @@ import Axios from "axios"
 import { Header, List, Button, Input, Form, Grid, Segment, Divider } from "semantic-ui-react"
 import LoaderFile from "../LoaderFile"
 import UserProduct from "./UserProduct"
+import TreeSourceLoad from "../TreeSourceLoad"
 
 const UserProducts = () => {
   
@@ -34,20 +35,16 @@ const UserProducts = () => {
   const renderProducts = () => {
     console.log(loading)
     console.log("products: ", products)
-    return products.map((p)=>{
+    return products.map((p, i)=>{
       return(
-        <>
-          <List divided verticalAlign='middle'>
-            <UserProduct {...p}/>
-          </List>
-        </>
+            <UserProduct key={i} {...p}/>
       )
     })
   }
   
   if (loading) { 
       return (
-        <LoaderFile />
+        <TreeSourceLoad />
       )
     }
     if (error) {
@@ -60,7 +57,9 @@ const UserProducts = () => {
         <Form>
         <Input placeholder="Search Here"/>
         </Form>
+        <List divided verticalAlign='middle'>
           {renderProducts()}
+        </List>
     </>
   )
 
