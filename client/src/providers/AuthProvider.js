@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useState } from "react"
 import Axios from "axios"
 import { useHistory } from "react-router-dom"
@@ -7,6 +7,10 @@ import { useHistory } from "react-router-dom"
 export const AuthContext = React.createContext()
 
 const AuthProvider = (props) => {
+
+  const [user, setUser] = useState(null)
+  
+  // const [liveOrder, setLiveOrder] = useState("new_quote")
 
   const handleRegister = async (user, history) => {
     try {
@@ -40,11 +44,9 @@ const AuthProvider = (props) => {
     } catch (err) {
       alert("Error occurred while attempting to Logout user. Please Debug for more information")
     }
-    
+
   }
-
-
-  const [user, setUser] = useState(null)
+  
 
   const auth = {
     ...user,

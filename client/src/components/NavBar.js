@@ -1,7 +1,7 @@
 import {Menu} from "semantic-ui-react"
 import {Link, useHistory} from "react-router-dom"
 import styled from "styled-components"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { AuthContext } from "../providers/AuthProvider"
 
 
@@ -11,26 +11,41 @@ export default () => {
 
   const value = useContext(AuthContext)
 
-  const links = () => {
+  const userStatus = () => {
     if (value.authenticated){
       return (
       <>
-        <Menu.Item onClick={() => value.handleLogout(history)} name="Logout" />
-        <Link to="/user">
-          <MenuText content={value.email} />
+        <Link to={`/order/${value.liveOrder}`}>
+          <Menu.Item name='Products'/>
         </Link>
+        <Link to ='/order-management/'>
+          <Menu.Item name='Orders'/>
+        </Link>
+        <Menu.Menu position="right">
+          <Menu.Item onClick={() => value.handleLogout(history)} name="Logout" />
+          <Link to="/user">
+            <MenuText content={value.email} />
+          </Link>
+        </Menu.Menu>
       </>
       )
     }
     return(
       <>
-      <Link to="/login">
-        <Menu.Item name='Login'/>
+      <Link to="/products">
+        <Menu.Item name='Products'/>
       </Link>
-      <Link to="/register">
-        <Menu.Item name='Register'/>
+      <Link to ='/order-management/'>
+        <Menu.Item name='Orders'/>
       </Link>
-      
+      <Menu.Menu position="right">
+        <Link to="/login">
+          <Menu.Item name='Login'/>
+        </Link>
+        <Link to="/register">
+          <Menu.Item name='Register'/>
+        </Link>
+      </Menu.Menu>
       </>
     )
   }
@@ -43,10 +58,7 @@ export default () => {
       <Link to="/users">
         <Menu.Item name='All Users'/>
       </Link>
-      <Link to="/things">
-        <Menu.Item name='Things'/>
-      </Link>
-      <Menu.Menu position="right">{links()}</Menu.Menu>
+      {userStatus()}
     </Menu>
   )
 }

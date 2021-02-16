@@ -4,7 +4,7 @@ import Axios from "axios"
 
 const FetchUser = (props) => {
 
-  const [token, setToken] = useState(false)
+  const [checkToken, setCheckToken] = useState(false)
 
   const {authenticated, setUser} = useContext(AuthContext)
 
@@ -14,7 +14,7 @@ const FetchUser = (props) => {
 
   const getUser = async () => {
     if (authenticated || !localStorage.getItem('access-token')) {
-      setToken(true)
+      setCheckToken(true)
       return; 
     }
     
@@ -25,11 +25,11 @@ const FetchUser = (props) => {
     } catch (err) {
       console.log(err)
     } finally {
-      setToken(true)
+      setCheckToken(true)
     }
   }
 
-  return token ? props.children : null
+  return checkToken ? props.children : null
 }
 
 export default FetchUser

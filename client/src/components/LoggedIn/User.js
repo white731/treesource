@@ -1,6 +1,6 @@
 import { Card, CardContent, Image } from "semantic-ui-react"
 import { useContext } from "react"
-import { AuthContext } from "../providers/AuthProvider"
+import { AuthContext } from "../../providers/AuthProvider"
 
 const User = () => {
 

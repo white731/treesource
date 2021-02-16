@@ -7,15 +7,21 @@ import 'semantic-ui-css/semantic.min.css'
 import {BrowserRouter} from "react-router-dom"
 import AuthProvider from './providers/AuthProvider';
 import { initMiddleware, } from 'devise-axios';
+import OrdersProvider from './providers/OrdersProvider';
+import ProductsProvider from './providers/ProductsProvider';
 
 initMiddleware()
 
 ReactDOM.render(
-  <AuthProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </AuthProvider>,
+    <AuthProvider>
+      <OrdersProvider>
+        <ProductsProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </ProductsProvider>
+      </OrdersProvider>
+    </AuthProvider>,
   document.getElementById('root')
 );
 
